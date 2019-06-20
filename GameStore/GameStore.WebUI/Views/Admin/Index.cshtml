@@ -1,0 +1,32 @@
+﻿@model IEnumerable<GameStore.Domain.Domain.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>All Product</h2>
+<table class="Grid">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th class="NumericCol">Price</th>
+        <th>Action</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@Html.ActionLink(item.Name, "Edit", new { item.ProductID})</td>
+            <td class="NumericCol">@item.Price.ToString("c")</td>
+            <td>
+                @using(Html.BeginForm("Delete", "Admin"))
+                {
+                    @Html.Hidden("ProductId", item.ProductID)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+<p>@Html.ActionLink("Add new product", "Create")</p>

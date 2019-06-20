@@ -1,0 +1,11 @@
+﻿@model GameStore.Domain.Domain.Cart
+
+<div id="cart">
+    <span class="action">
+        <b>Welcome in Your Cart</b>
+        @Model.Lines.Sum(p => p.quantity)   item(s)
+        @Model.TotalValue().ToString("c")
+    </span>
+    @Html.ActionLink("Checkout", "Index", "Cart", new { returnUrl = Request.Url.PathAndQuery}, null)
+</div>
+

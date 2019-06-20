@@ -1,0 +1,31 @@
+﻿@model GameStore.Domain.Domain.ShippingDetails
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Check out now</h2>
+Pleace enter your details, and we`ll ship your goods right eway :(
+@using (Html.BeginForm())
+{
+    <h3>Ship to</h3>
+    <div>
+        Name: @Html.EditorFor(p => p.Name)
+    </div>
+    <h3>Enter Adress</h3>
+    <div> Line 1: @Html.EditorFor(p => p.Line1)</div>
+    <div> line 2: @Html.EditorFor(p => p.Line2)</div>
+    <div> Line 3: @Html.EditorFor(p => p.Line3)</div>
+    <div> City: @Html.EditorFor(p => p.City)</div>
+    <div> State: @Html.EditorFor(p => p.State)</div>
+    <div> Zip: @Html.EditorFor(p => p.Zip)</div>
+    <h3>Options</h3>
+    <label>
+        @Html.EditorFor(p =>p.GiftWrap)
+        Gift wrap these items
+    </label>
+    <p align ="center">
+        <input class="actionButtons" type="submit" value="Complete Order"/>
+    </p>
+}
+
